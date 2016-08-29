@@ -136,6 +136,14 @@ Prefab:
       propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 135402, guid: 770d5e38006a9ca4b91ca1e94c004b37, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 135402, guid: 770d5e38006a9ca4b91ca1e94c004b37, type: 2}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 770d5e38006a9ca4b91ca1e94c004b37, type: 2}
   m_IsPrefabParent: 0
@@ -390,13 +398,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 266100201}
-  m_LocalRotation: {x: 0.030912558, y: 0, z: 0, w: 0.9995221}
-  m_LocalPosition: {x: 0, y: 2.014, z: -3.35}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 3.5428998, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 931523772}
+  m_RootOrder: 0
 --- !u!114 &266100207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,15 +416,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2e96ef0c233a14db97cb2a5e6bc3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentRig: {fileID: 0}
   distanceAway: 5.05
+  distanceAwayMultiplier: 1.5
   distanceUp: 0.6
-  smooth: 3
-  followXform: {fileID: 0}
+  distanceUpMultiplier: 5
   follow: {fileID: 0}
+  followXform: {fileID: 0}
   widescreen: 0.2
   targetingTime: 0.5
   firstPersonThreshold: 0.5
+  firstPersonLookSpeed: 3
+  firstPersonXAxisClamp: {x: -70, y: 60}
+  fPSRotationDegreePerSecond: 120
+  freeThreshold: -0.1
+  camMindDistFromChar: {x: 1, y: -0.5}
+  rightStickThreshold: 0.1
   camSmoothDampTime: 0.1
+  lookDirDampTime: 0.1
 --- !u!114 &266100208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,7 +619,7 @@ GameObject:
   - 4: {fileID: 324952853}
   m_Layer: 0
   m_Name: Follow
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1173,6 +1190,35 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!1 &931523771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 931523772}
+  m_Layer: 0
+  m_Name: CameraRig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &931523772
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 931523771}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 266100206}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &1391962923 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 135402, guid: 770d5e38006a9ca4b91ca1e94c004b37, type: 2}
@@ -1193,6 +1239,11 @@ MonoBehaviour:
   gamecam: {fileID: 266100207}
   directionSpeed: 3
   rotationDegreesPerSecond: 120
+  speedDampTime: 0.05
+  fovDampTime: 3
+  jumpMultiplier: 1
+  capCollider: {fileID: 0}
+  jumpDist: 1
 --- !u!4 &1391962928 stripped
 Transform:
   m_PrefabParentObject: {fileID: 482086, guid: 770d5e38006a9ca4b91ca1e94c004b37, type: 2}
